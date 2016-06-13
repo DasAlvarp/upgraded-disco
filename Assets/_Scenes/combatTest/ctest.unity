@@ -97,9 +97,9 @@ GameObject:
   - 136: {fileID: 3656704}
   - 23: {fileID: 3656703}
   - 114: {fileID: 3656707}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PlebEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,6 +251,7 @@ GameObject:
   - 4: {fileID: 141294773}
   - 218: {fileID: 141294772}
   - 154: {fileID: 141294771}
+  - 23: {fileID: 141294774}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -312,6 +313,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!23 &141294774
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 141294770}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!1 &714222466
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +347,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 714222467}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HealthbarPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -502,9 +529,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1105713504}
-  - 33: {fileID: 1105713503}
-  - 65: {fileID: 1105713502}
-  - 23: {fileID: 1105713501}
   m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
@@ -512,51 +536,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!23 &1105713501
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1105713500}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!65 &1105713502
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1105713500}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1105713503
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1105713500}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &1105713504
 Transform:
   m_ObjectHideFlags: 0
@@ -584,7 +563,7 @@ GameObject:
   - 54: {fileID: 1294932374}
   - 114: {fileID: 1294932375}
   - 114: {fileID: 1294932376}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -692,8 +671,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 1105713504}
-  mat: {fileID: 2100000, guid: 59a5de1962b25704cb4ddcf490eb63b4, type: 2}
-  mat2: {fileID: 2100000, guid: 59a5de1962b25704cb4ddcf490eb63b4, type: 2}
+  mat: {fileID: 2100000, guid: 4208df87d6b0ddc4c81104e31e4a9541, type: 2}
+  mat2: {fileID: 2100000, guid: 4208df87d6b0ddc4c81104e31e4a9541, type: 2}
 --- !u!1 &1483223986
 GameObject:
   m_ObjectHideFlags: 0

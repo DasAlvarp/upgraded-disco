@@ -53,7 +53,7 @@ public class AttackLine : MonoBehaviour {
             }
             time += Time.deltaTime;
 
-            if(time > .05)
+            if(time > .02)
             {
                 time = 0;
                 steps++;
@@ -79,7 +79,7 @@ public class AttackLine : MonoBehaviour {
         LineRenderer lineRenderer = gameObject.AddComponent<LineRenderer>();
 
         lineRenderer.material = mat;
-        lineRenderer.SetWidth(1F, 1F);
+        lineRenderer.SetWidth(.5F, .5F);
 
 
         lineRenderer.SetVertexCount(connectPoints.Count);
@@ -89,7 +89,7 @@ public class AttackLine : MonoBehaviour {
             lineRenderer.SetPosition(x, (Vector3)connectPoints[x]);
         }
 
-
+        DoDamage(lineRenderer);
 
         
         steps = 0;
@@ -106,5 +106,27 @@ public class AttackLine : MonoBehaviour {
         placedPoints.Clear();
 
         yield return null;
+    }
+
+    public void DoDamage(LineRenderer lr)
+    {
+        Bounds lineBounds = lr.bounds;
+
+        GameObject[] withTags = GameObject.FindGameObjectsWithTag("Enemy");
+
+        Bounds boundThing;
+
+        foreach(GameObject tagged in withTags)
+        {
+            print("boop");
+
+            boundThing = tagged.GetComponent<Renderer>().bounds;
+            if(boundThing.Intersects(lineBounds))
+            {
+                print("boop");
+                tagged.GetComponent<BaseUnitComponent>().health -= 1;
+            }
+        }
+
     }
 }
