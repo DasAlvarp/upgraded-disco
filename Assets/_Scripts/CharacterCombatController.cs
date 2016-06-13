@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharacterCombatController : MonoBehaviour
+public class CharacterCombatController : BaseUnitComponent
 {
-    public int speed;
 
 	// Use this for initialization
 	void Start () {
@@ -11,12 +10,13 @@ public class CharacterCombatController : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         Move();
 	}
 
     void Move()
     {
-        transform.GetComponent<Rigidbody>().velocity = new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical")) * speed;
+        transform.GetComponent<Rigidbody>().velocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * speed;
     }
 }
