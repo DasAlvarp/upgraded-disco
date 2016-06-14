@@ -159,10 +159,15 @@ public class AttackLine : MonoBehaviour {
             {
                 if (boundThing.Intersects(tagged.GetComponent<Collider>().bounds))
                 {
-                    tagged.GetComponent<BaseUnitComponent>().health -= intMax / steps;
+                    tagged.GetComponent<BaseUnitComponent>().health -= GetDamage();
                 }
             }
         }
 
+    }
+
+    public int GetDamage()
+    {
+        return intMax / steps;
     }
 }
