@@ -24,7 +24,7 @@ public class BaseUnitComponent : MonoBehaviour
 
     void SetHealtBar()
     {
-        healthBar.GetComponent<HealthbarUIcomponent>().health = health;
-        healthBar.GetComponent<HealthbarUIcomponent>().parent = headPoint;
+        healthBar.GetComponent<HealthControl>().health = health;
+        healthBar.GetComponent<HealthControl>().parent = headPoint;
     }
 }

@@ -2,10 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class HealthbarUIcomponent : MonoBehaviour
+public class HealthbarUIcomponent : HealthControl
 {
-    public int health;
-    public Transform parent;
 
     public Camera cam;
 
