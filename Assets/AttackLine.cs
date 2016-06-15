@@ -168,6 +168,18 @@ public class AttackLine : MonoBehaviour {
 
     public int GetDamage()
     {
-        return intMax / steps;
+        if (steps == 0)
+            return 0;
+
+        double retval = steps;
+        retval -= 4;
+        retval /= 5;
+        retval *= -retval;
+        retval += 20;
+
+        if (retval <= 0)
+            return 0;
+
+        return (int)retval;
     }
 }
