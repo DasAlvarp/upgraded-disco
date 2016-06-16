@@ -16,9 +16,9 @@ public class PlayerHealthBar : HealthControl
 	// Update is called once per frame
 	void Update ()
     {
-        valTrack.value = Mathf.Pow(((float)parent.GetComponent<AttackLine>().GetDamage() / 20f), 4);
+        valTrack.value = Mathf.Pow(((float)parent.GetComponent<ControllerAttack>().GetDamage() / 20f), 4);
         healthTrack.value = (float)((float)health / (float)maxHealth);
-        if (parent.GetComponent<AttackLine>().GetCooldownRatio() >= 1)
+        if (parent.GetComponent<ControllerAttack>().GetCooldownRatio() >= 1)
         {
             fillBar.color = Color.cyan;
         }
@@ -26,7 +26,7 @@ public class PlayerHealthBar : HealthControl
         {
             fillBar.color = Color.green;
         }
-        fillBar.color =  new Color(fillBar.color.r, fillBar.color.g, fillBar.color.b, parent.GetComponent<AttackLine>().GetCooldownRatio());
+        fillBar.color =  new Color(fillBar.color.r, fillBar.color.g, fillBar.color.b, parent.GetComponent<ControllerAttack>().GetCooldownRatio());
 
 
 
