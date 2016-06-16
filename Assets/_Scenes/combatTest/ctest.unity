@@ -172,11 +172,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3656702}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bf624fca0046d342a9d8e0fdc6b56b6, type: 3}
+  m_Script: {fileID: 11500000, guid: ae6ba3e23bb1fb142a6a1a9f13faf836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  speed: 0
+  health: 50
+  speed: 8
   headPoint: {fileID: 714222467}
   healthBar: {fileID: 141210, guid: 810f206ab625ef74ab83a71fb690cd1c, type: 2}
 --- !u!1 &25876971
@@ -367,6 +367,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3656706}
   m_RootOrder: 0
+--- !u!114 &738059915 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11482072, guid: 2faad93353a78cd40b65ca47ce438819,
+    type: 2}
+  m_PrefabInternal: {fileID: 1115410176}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &819767145
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,6 +556,22 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 22457302, guid: 74988b926c315be479247f3500be5412, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.9999943
+      objectReference: {fileID: 0}
+    - target: {fileID: 22457302, guid: 74988b926c315be479247f3500be5412, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 22433156, guid: 74988b926c315be479247f3500be5412, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.500009
+      objectReference: {fileID: 0}
+    - target: {fileID: 22433156, guid: 74988b926c315be479247f3500be5412, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 74988b926c315be479247f3500be5412, type: 2}
   m_IsPrefabParent: 0
@@ -729,6 +751,34 @@ Prefab:
     - target: {fileID: 22401460, guid: 2faad93353a78cd40b65ca47ce438819, type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11482072, guid: 2faad93353a78cd40b65ca47ce438819, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 22450024, guid: 2faad93353a78cd40b65ca47ce438819, type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -29.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 22450024, guid: 2faad93353a78cd40b65ca47ce438819, type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -58.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11482072, guid: 2faad93353a78cd40b65ca47ce438819, type: 2}
+      propertyPath: m_Color.r
+      value: 0.372
+      objectReference: {fileID: 0}
+    - target: {fileID: 11482072, guid: 2faad93353a78cd40b65ca47ce438819, type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11482072, guid: 2faad93353a78cd40b65ca47ce438819, type: 2}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11482072, guid: 2faad93353a78cd40b65ca47ce438819, type: 2}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2faad93353a78cd40b65ca47ce438819, type: 2}
@@ -936,6 +986,7 @@ MonoBehaviour:
   parent: {fileID: 1294932373}
   valTrack: {fileID: 2100526829}
   healthTrack: {fileID: 1321425943}
+  fillBar: {fileID: 738059915}
 --- !u!1001 &2006095947
 Prefab:
   m_ObjectHideFlags: 0

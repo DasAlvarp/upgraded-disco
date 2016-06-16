@@ -22,7 +22,7 @@ public class BaseUnitComponent : MonoBehaviour
         SetHealtBar();
     }
 
-    void SetHealtBar()
+    public void SetHealtBar()
     {
         healthBar.GetComponent<HealthControl>().health = health;
         healthBar.GetComponent<HealthControl>().parent = headPoint;

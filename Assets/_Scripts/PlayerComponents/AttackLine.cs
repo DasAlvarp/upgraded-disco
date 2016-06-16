@@ -84,6 +84,11 @@ public class AttackLine : MonoBehaviour {
         cooldown -= Time.deltaTime;
     }
 
+    public float GetCooldownRatio()
+    {
+        return (baseCooldown - cooldown) / baseCooldown;
+    }
+
 
     IEnumerator DrawLine()
     {

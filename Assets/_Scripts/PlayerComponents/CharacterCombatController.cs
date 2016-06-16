@@ -8,7 +8,8 @@ public class CharacterCombatController : BaseUnitComponent
     public int maxHealth;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         centerUI = GameObject.FindObjectOfType<Canvas>();
 	
 	}
