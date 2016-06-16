@@ -13,7 +13,6 @@ public class ControllerAttack : MonoBehaviour {
     ArrayList connectingLines;
 
     Vector3 sightPos;
-    RaycastHit hit;
 
     public Material mat;
 
@@ -42,15 +41,15 @@ public class ControllerAttack : MonoBehaviour {
         time = 0;
         steps = 0;
 
+        front.position = transform.position;
+
+
     }
 
     // Update is called once per frame
     void Update ()
     {
         ///get raycast a bit above player so it looks better.
-        Vector3 pos = Input.mousePosition;
-
-        pos = Camera.main.ScreenToWorldPoint(pos);
 
 
         sightPos = front.position ;
@@ -71,6 +70,7 @@ public class ControllerAttack : MonoBehaviour {
 
             front.Translate(new Vector3(Input.GetAxis("rightJoyHorizontal"), 0,Input.GetAxis("rightJoyVertical")) * attackSpeed *Time.deltaTime);
 
+            //place point at times.
             if (time > .02)
             {
                 time = 0;
@@ -90,6 +90,9 @@ public class ControllerAttack : MonoBehaviour {
             transform.GetComponent<CharacterCombatController>().health -= GetDamage();
             StartCoroutine(DrawLine());
             ResetCooldown();//reset cooldown on attack.
+
+            front.position = transform.position;
+
         }
         //update cooldown
         cooldown -= Time.deltaTime;
