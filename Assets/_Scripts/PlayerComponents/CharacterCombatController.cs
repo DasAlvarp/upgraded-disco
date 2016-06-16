@@ -11,8 +11,7 @@ public class CharacterCombatController : BaseUnitComponent
 	void Start ()
     {
         centerUI = GameObject.FindObjectOfType<Canvas>();
-	
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()

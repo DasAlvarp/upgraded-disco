@@ -1,18 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HealthControl : MonoBehaviour {
+public class HealthControl : MonoBehaviour
+{
+    //basically an abstract class. Should be abstract.
     public int health;
     public int maxHealth;
     public Transform parent;
-
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

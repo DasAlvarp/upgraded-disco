@@ -1,21 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ControllerAttack : MonoBehaviour {
+public class ControllerAttack : MonoBehaviour
+{
+    //point placed, and current front of line.
     public Transform point;
     public Transform front;
 
+    //effective hitbox of one line segment.
     public GameObject hitbox;
 
-    ArrayList connectPoints;
+    //list of points
     ArrayList placedPoints;
 
+    //list of line segments
     ArrayList connectingLines;
 
+    //position seen
     Vector3 sightPos;
 
+    //color of line
     public Material mat;
 
+    //attack stats
     public int intMax;
     public int attackSpeed;
 
@@ -32,28 +39,25 @@ public class ControllerAttack : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        connectPoints = new ArrayList();
         placedPoints = new ArrayList();
         connectingLines = new ArrayList();
 
         front = Instantiate(front);
 
+        //time = time passed since activation, steps = number of opints placed.
         time = 0;
         steps = 0;
 
         front.position = transform.position;
-
-
     }
 
     // Update is called once per frame
     void Update ()
     {
-        ///get raycast a bit above player so it looks better.
 
+        sightPos = front.position ;//position is always set to the head.
 
-        sightPos = front.position ;
-        front.gameObject.SetActive(on);
+        front.gameObject.SetActive(on);//always the same as the active setting.
         
         //attack button.
         if (cooldown < 0 && Mathf.Abs(Input.GetAxisRaw("rightJoyHorizontal")) + Mathf.Abs(Input.GetAxisRaw("rightJoyVertical")) > .5f)
@@ -65,34 +69,29 @@ public class ControllerAttack : MonoBehaviour {
                 on = true;
             }
 
-
+            //increment time
             time += Time.deltaTime;
 
+            //movement is always the same.
             front.Translate(new Vector3(Input.GetAxis("rightJoyHorizontal"), 0,Input.GetAxis("rightJoyVertical")) * attackSpeed *Time.deltaTime);
 
-            //place point at times.
+            //place point at times. Reset time every placement.
             if (time > .02)
             {
                 time = 0;
                 steps++;
-                connectPoints.Add(sightPos);
                 placedPoints.Add(Instantiate(point, sightPos, Quaternion.identity));
             }
-
-            //on release, draw stuff;
-
         }
-        else if(on == true)//just let go of joystick.
+        else if(on == true)//just let go of joystick. Draw stuff.
         {
             on = false;
-            connectPoints.Add(sightPos);
+            //last point shoiuld def be there.
             placedPoints.Add(Instantiate(point, sightPos, Quaternion.identity));
+
             transform.GetComponent<CharacterCombatController>().health -= GetDamage();
             StartCoroutine(DrawLine());
             ResetCooldown();//reset cooldown on attack.
-
-            front.position = transform.position;
-
         }
         //update cooldown
         cooldown -= Time.deltaTime;
@@ -100,6 +99,7 @@ public class ControllerAttack : MonoBehaviour {
 
     public float GetCooldownRatio()
     {
+        //for fade.
         return (baseCooldown - cooldown) / baseCooldown;
     }
 
@@ -112,21 +112,21 @@ public class ControllerAttack : MonoBehaviour {
         lineRenderer.material = mat;
         lineRenderer.SetWidth(.5F, .5F);
 
-
-        lineRenderer.SetVertexCount(connectPoints.Count);
+        lineRenderer.SetVertexCount(placedPoints.Count);
 
         //placing verticies
-        for (int x = 0; x < connectPoints.Count; x++)
+        for (int x = 0; x < placedPoints.Count; x++)
         {
-            lineRenderer.SetPosition(x, (Vector3)connectPoints[x]);
+            Vector3 vec = ((Transform)placedPoints[x]).position;
+            lineRenderer.SetPosition(x, vec);
         }
 
         //rectange acts as hitbox. Larger, but that's ok, since aiming a thin line is tough.
-        for(int x = 0; x < connectPoints.Count - 1; x++)
+        for(int x = 0; x < placedPoints.Count - 1; x++)
         {
-            GameObject line = (GameObject)Instantiate(hitbox, ((Vector3)connectPoints[x] + (Vector3)connectPoints[x + 1]) / 2, Quaternion.identity);
-            line.transform.LookAt((Vector3)connectPoints[x]);
-            line.transform.localScale = new Vector3(1, 1, ((Vector3)connectPoints[x] - (Vector3)connectPoints[x + 1]).magnitude);
+            GameObject line = (GameObject)Instantiate(hitbox, (((Transform)placedPoints[x]).transform.position + ((Transform)placedPoints[x + 1]).transform.position) / 2, Quaternion.identity);
+            line.transform.LookAt(((Transform)placedPoints[x]).transform.position);
+            line.transform.localScale = new Vector3(1, 1, (((Transform)placedPoints[x]).transform.position - ((Transform)placedPoints[x + 1]).transform.position).magnitude);
 
             connectingLines.Add(line);
         }
@@ -136,12 +136,12 @@ public class ControllerAttack : MonoBehaviour {
 
         //reset things.
         steps = 0;
-        connectPoints.Clear();
 
         yield return new WaitForSeconds(1f);
 
         Destroy(lineRenderer);
 
+        //destroy a lot of things.
         foreach(Transform block in placedPoints)
         {
             Destroy(block.gameObject);
@@ -150,9 +150,13 @@ public class ControllerAttack : MonoBehaviour {
         {
             Destroy(hitb);
         }
-        connectingLines.Clear();
 
+        connectingLines.Clear();
         placedPoints.Clear();
+
+        front.position = transform.position;
+        sightPos = front.position;
+
 
         yield return null;
     }
@@ -174,6 +178,7 @@ public class ControllerAttack : MonoBehaviour {
         {
             boundThing = line.GetComponent<Collider>().bounds;
             
+            //couldn't think of a better way to do this. It's not pretty. Avert your eyes.
             foreach(GameObject tagged in withTags)
             {
                 if (boundThing.Intersects(tagged.GetComponent<Collider>().bounds))
@@ -182,11 +187,11 @@ public class ControllerAttack : MonoBehaviour {
                 }
             }
         }
-
     }
 
     public int GetDamage()
     {
+        //damage dealing algorithm. Eh. It's a thing.
         if (steps == 0)
             return 0;
 

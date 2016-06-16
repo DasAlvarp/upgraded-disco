@@ -11,9 +11,9 @@ public class BaseUnitComponent : MonoBehaviour
     public GameObject healthBar;
     
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         healthBar = Instantiate(healthBar);
-
     }
 
     // Update is called once per frame
@@ -22,6 +22,7 @@ public class BaseUnitComponent : MonoBehaviour
         SetHealtBar();
     }
 
+    //seting components
     public void SetHealtBar()
     {
         healthBar.GetComponent<HealthControl>().health = health;

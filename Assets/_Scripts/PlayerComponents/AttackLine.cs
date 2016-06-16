@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AttackLine : MonoBehaviour {
+public class AttackLine : MonoBehaviour
+{
     public Transform point;
     public GameObject hitbox;
 

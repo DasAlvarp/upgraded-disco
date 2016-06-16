@@ -8,7 +8,8 @@ public class BaseMinionComponent : BaseUnitComponent
     float time;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         time = attackTime;
         healthBar = Instantiate(healthBar);
         player = GameObject.Find("Player").transform;
@@ -30,6 +31,7 @@ public class BaseMinionComponent : BaseUnitComponent
 
     public void Attack()
     {
+        //attacks when cooldown is low enough and is close nough.
         time -= Time.deltaTime;
         if(Mathf.Abs((player.position - transform.position).magnitude) < 2 && time <= 0)
         {
@@ -43,11 +45,12 @@ public class BaseMinionComponent : BaseUnitComponent
     public void Move()
     {
         transform.LookAt(player);
-
-        if (Mathf.Abs((player.position - transform.position).magnitude) > 2)
+        //move towards player.
+        if (Mathf.Abs((player.position - transform.position).magnitude) > 1)
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
 
+    //pushes self back
     IEnumerator Knockback(float time, float distance)
     {
         for(float passed = 0; passed < time; passed += Time.deltaTime)
@@ -58,6 +61,7 @@ public class BaseMinionComponent : BaseUnitComponent
         }
     }
 
+    //pushes transform back.
     IEnumerator Push(Transform player, Vector3 direction, float time, float distance)
     {
         for (float passed = 0; passed < time; passed += Time.deltaTime)
