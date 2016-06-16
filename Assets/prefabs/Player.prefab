@@ -13,8 +13,8 @@ GameObject:
   - 23: {fileID: 2307320}
   - 54: {fileID: 5477980}
   - 114: {fileID: 11492536}
-  - 114: {fileID: 11428728}
   - 195: {fileID: 19510074}
+  - 114: {fileID: 11499924}
   m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
@@ -83,21 +83,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &11428728
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101572}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5461f978b76d4f40bb766525b3ac5f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  point: {fileID: 0}
-  hitbox: {fileID: 0}
-  mat: {fileID: 2100000, guid: 4208df87d6b0ddc4c81104e31e4a9541, type: 2}
-  intMax: 40
 --- !u!114 &11492536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,11 +94,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d255d30c89afbb48a05aeb9fa649266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 100
   speed: 8
   headPoint: {fileID: 0}
   healthBar: {fileID: 0}
   centerUI: {fileID: 0}
+  maxHealth: 0
+--- !u!114 &11499924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0790ce3ed0791d646a5addc49e153f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  point: {fileID: 0}
+  front: {fileID: 0}
+  hitbox: {fileID: 0}
+  mat: {fileID: 2100000, guid: 4208df87d6b0ddc4c81104e31e4a9541, type: 2}
+  intMax: 40
+  attackSpeed: 25
 --- !u!136 &13648396
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -18,6 +18,7 @@ public class ControllerAttack : MonoBehaviour {
     public Material mat;
 
     public int intMax;
+    public int attackSpeed;
 
     LineRenderer lineRenderer;
 
@@ -35,6 +36,8 @@ public class ControllerAttack : MonoBehaviour {
         connectPoints = new ArrayList();
         placedPoints = new ArrayList();
         connectingLines = new ArrayList();
+
+        front = Instantiate(front);
 
         time = 0;
         steps = 0;
@@ -66,7 +69,7 @@ public class ControllerAttack : MonoBehaviour {
 
             time += Time.deltaTime;
 
-            front.Translate(new Vector3(Input.GetAxis("rightJoyHorizontal"), 0,Input.GetAxis("rightJoyVertical")) * 50 *Time.deltaTime);
+            front.Translate(new Vector3(Input.GetAxis("rightJoyHorizontal"), 0,Input.GetAxis("rightJoyVertical")) * attackSpeed *Time.deltaTime);
 
             if (time > .02)
             {
