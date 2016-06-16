@@ -3,6 +3,7 @@ using System.Collections;
 
 public class HealthControl : MonoBehaviour {
     public int health;
+    public int maxHealth;
     public Transform parent;
 
     // Use this for initialization

@@ -5,6 +5,8 @@ public class CharacterCombatController : BaseUnitComponent
 {
     public Canvas centerUI;
 
+    public int maxHealth;
+
 	// Use this for initialization
 	void Start () {
         centerUI = GameObject.FindObjectOfType<Canvas>();
@@ -25,8 +27,6 @@ public class CharacterCombatController : BaseUnitComponent
 
     void DrawUI()
     {
-        centerUI.GetComponent<HealthControl>().health = health;
-        centerUI.GetComponent<HealthControl>().parent = transform;
-
+        healthBar.GetComponent<HealthControl>().health = health;
     }
 }

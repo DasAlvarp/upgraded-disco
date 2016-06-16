@@ -75,7 +75,7 @@ public class AttackLine : MonoBehaviour {
             {
                 connectPoints.Add(sightPos);
                 placedPoints.Add(Instantiate(point, sightPos, Quaternion.identity));
-
+                transform.GetComponent<CharacterCombatController>().health -= GetDamage();
                 StartCoroutine(DrawLine());
                 ResetCooldown();//reset cooldown on attack.
             }
